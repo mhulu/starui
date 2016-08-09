@@ -16,6 +16,13 @@ export function findFirst (obj) {
     }
   }
 }
+export function findObj (obj) {
+  for (var k in obj) {
+    if (obj[k].length) {
+      return obj[k]
+    }
+  }
+}
 
 /**
  * 遍历一个对象,取出指定k-v 的一组

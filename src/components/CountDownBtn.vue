@@ -1,17 +1,12 @@
 <template>
-  <button class="btn {{class}}" id="getAuthcode" @click.stop.prevent="getAuthcode($event)"><slot>获取短信验证码</slot></button>
+  <button class="btn btn-azure" id="getAuthcode" @click.prevent="getAuthcode($event)"><slot>获取短信验证码</slot></button>
 </template>
 <script>
   import * as utils from '../utils'
   export default {
     props: {
-      duration: {},
-      class: {}
-    },
-    data: function () {
-      return {
-        class: 'btn-azure',
-        duration: 60
+      duration: {
+        default: 60
       }
     },
     methods: {

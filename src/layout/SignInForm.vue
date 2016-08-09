@@ -103,7 +103,6 @@
 
 <script>
 import { alert } from 'vue-strap'
-import {login} from '../vuex/actions'
 import * as utils from '../utils'
 import * as validate from '../validator'
 import countDown from '../components/CountDownBtn'
@@ -131,11 +130,6 @@ export default {
     alert,
     countDown
   },
-  vuex: {
-    actions: {
-      login
-    }
-  },
   methods: {
     /**
      * 用户注册
@@ -154,7 +148,7 @@ export default {
         this.info = response.data.result
         this.loginTab = true
       }, function (response) {
-        this.$set('error', utils.findAll(response.data))
+        this.$set('error', utils.findObj(response.data))
         this.$set('showErr', true)
       })
     },
@@ -166,7 +160,7 @@ export default {
         this.showInfo = true
         this.info = response.data.result
       }, function (response) {
-        this.$set('error', utils.findAll(response.data))
+        this.$set('error', utils.findObj(response.data))
         this.$set('showErr', true)
       })
     },
@@ -183,10 +177,8 @@ export default {
       this.$http.post('auth/login', data).then(function (response) {
         var token = response.data.result
         window.localStorage.setItem('wemesh_token', token)
-        this.login()  // 将登陆状态写入Vuex中
-        this.$route.router.go('/')
       }, function (response) {
-        this.$set('error', utils.findAll(response.data))
+        this.$set('error', utils.findObj(response.data))
         this.$set('showErr', true)
       })
     }

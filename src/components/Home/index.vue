@@ -44,12 +44,6 @@
           </div>
         </div>
 </template>
-<script>
-    import loading from '../components/Loading.vue'
-    export default {
-      components: {loading}
-    }
-</script>
 <style>
   .panel h4{
     color: white;

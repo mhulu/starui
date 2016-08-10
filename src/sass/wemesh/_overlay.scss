@@ -14,10 +14,10 @@
   z-index: 9;
 }
 .overlay_open,
-.overlay_open body {
+.overlay_open .overlay {
   overflow: hidden;
 }
-.overlay_open .overlay {
+.overlay {
   display: flex;
 }
 .overlay_mask {

@@ -2,8 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-sm-6 col-xs-12 col-lg-4 col-md-offset-3 col-lg-offset-4 col-sm-offset-3 header padding-top-20 center  login">
-        <img src="http://7lrzqf.com1.z0.glb.clouddn.com/images/ucenter-logo.png">
-        <h5>微脉事 WeMesh&trade;</h5>
+        <logo></logo>
         <!-- TAB START -->
         <div class="login-tab row margin-top-20">
           <div class="col-sm-12">
@@ -103,9 +102,11 @@
 
 <script>
 import { alert } from 'vue-strap'
-import * as utils from '../utils'
-import * as validate from '../validator'
-import countDown from '../components/CountDownBtn'
+import { localLogin } from '../../vuex/actions'
+// import * as utils from '../../utils'
+// import * as validate from '../../validator'
+import countDown from '../CountDownBtn'
+import logo from '../Logo'
 export default {
   replace: true,
   data () {
@@ -128,64 +129,30 @@ export default {
   },
   components: {
     alert,
-    countDown
+    countDown,
+    logo
+  },
+  vuex: {
+    getters: {
+      // token: ({auth}) => auth.token
+    },
+    actions: {
+      localLogin
+    }
   },
   methods: {
-    /**
-     * 用户注册
-     * @return {[type]} [description]
-     */
-    signup () {
-      var data = {
-        mobile: this.credentials.newMobile,
-        password: this.credentials.newPassword,
-        password_confirmation: this.credentials.rePassword,
-        authCode: this.credentials.authCode
-      }
-
-      this.$http.post('auth/register', data).then(function (response) {
-        this.showInfo = true
-        this.info = response.data.result
-        this.loginTab = true
-      }, function (response) {
-        this.$set('error', utils.findObj(response.data))
-        this.$set('showErr', true)
-      })
-    },
     validateMobile () {
-      var data = {
-        mobile: this.credentials.newMobile
-      }
-      this.$http.post('auth/sendSms', data).then(function (response) {
-        this.showInfo = true
-        this.info = response.data.result
-      }, function (response) {
-        this.$set('error', utils.findObj(response.data))
-        this.$set('showErr', true)
-      })
+      window.console.log('validateMobile')
+    },
+    signup () {
+      window.console.log('signup')
     },
     onSubmit () {
-      var data = {
+      var user = {
         mobile: this.credentials.mobile,
         password: this.credentials.password
       }
-      if (!validate.isMobile(this.credentials.mobile)) {
-        this.showErr = true
-        this.error = '您没有输入正确的手机号码'
-        return false
-      }
-      this.$http.post('auth/login', data).then(function (response) {
-        var token = response.data.result
-        window.localStorage.setItem('wemesh_token', token)
-      }, function (response) {
-        this.$set('error', utils.findObj(response.data))
-        this.$set('showErr', true)
-      })
-    }
-  },
-  computed: {
-    notMobile: function () {
-      return !validate.isMobile(this.credentials.newMobile)
+      this.localLogin(user)
     }
   }
 }

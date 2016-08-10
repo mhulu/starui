@@ -1,28 +1,41 @@
-import Login from './pages/SignIn'
-import Single from './layout/Single'
+import {getCookie} from './authService'
+
+import Login from './components/Auth/Login'
+import Overlay from './components/Overlay'
+import Home from './components/Home'
+import Dashboard from './components/Dashboard'
+import NotFound from './components/NotFound'
+
 export default function (router) {
   router.map({
-    '/': {
-      component: Single,
+    '/auth': {
+      component: Overlay,
       auth: false,
       subRoutes: {
         '/': {
           component: Login
         }
       }
+    },
+    '/': {
+      component: Dashboard,
+      subRoutes: {
+        '/': {
+          component: Home
+        }
+      }
+    },
+    '*': {
+      component: NotFound
     }
   })
-  router.redirect({
-    '*': '/'
-  })
 
-    // 不允许没有userinfo数据而直接访问'home'及其他
-  // const isHold = store.state.auth.isHold
-  // router.beforeEach(function (transition) {
-  //   if (transition.to.auth !== false && window.sessionStorage.getItem('wemesh.userInfo') === null) {
-  //     transition.redirect('/')
-  //   } else {
-  //     transition.next()
-  //   }
-  // })
+  // 访问Dashboard及其子组件需要登录
+  router.beforeEach(function (transition) {
+    if (transition.to.auth !== false && getCookie('token') === undefined) {
+      transition.redirect('/auth/')
+    } else {
+      transition.next()
+    }
+  })
 }

@@ -63,10 +63,10 @@
 </template>
 
 <script>
-  import * as utils from '../utils'
-  import fullscreen from '../components/Fullscreen.vue'
-  import msgBox from '../layout/MsgBox.vue'
-  import Dropdown from '../components/Dropdown.vue'
+  import * as utils from '../../utils'
+  import fullscreen from '../Fullscreen.vue'
+  import msgBox from './MsgBox.vue'
+  import Dropdown from '../Dropdown.vue'
   export default {
     data: function () {
       return {

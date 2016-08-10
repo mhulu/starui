@@ -35,22 +35,23 @@
 </template>
 
 <script>
-  import { getUserInfo, logout } from '../vuex/actions'
-  import Dropdown from '../components/Dropdown.vue'
+  import { logout } from '../../vuex/actions'
+  import Dropdown from '../Dropdown.vue'
   export default {
     components: {
       Dropdown
     },
     vuex: {
       getters: {
-        userInfo: ({userInfo}) => userInfo.items
+        // userInfo: ({userInfo}) => userInfo.items
       },
       actions: {
-        getUserInfo, logout
+        // getUserInfo, logout
+        logout
       }
     },
     created () {
-      this.getUserInfo()
+      // this.getUserInfo()
     }
   }
 </script>

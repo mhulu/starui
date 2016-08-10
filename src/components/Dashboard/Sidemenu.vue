@@ -30,14 +30,8 @@
 </template>
 
 <script>
-  import * as utils from '../utils'
-  import store from '../vuex/store'
+  import * as utils from '../../utils'
   export default {
-    computed: {
-      menuList () {
-        return store.state.userInfo.items.menu
-      }
-    },
     methods: {
       /**
        * 二级子菜单点击后出现

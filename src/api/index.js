@@ -1,7 +1,10 @@
 import {UserResource, AuthResource} from './resources'
 
 export default {
-  getLogin: function (data) {
-    return AuthResource.save({id: 'id'}, data)
-  } 
+  localLogin: function (content) {
+    return AuthResource.save(content)
+  },
+  getUserInfo: function (data) {
+    return UserResource.save({id: 'id'}, data)
+  }
 }

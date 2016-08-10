@@ -6,8 +6,8 @@
 </template>
 
 <script>
-    import * as utils from '../utils'
-    import store from '../vuex/store'
+    import * as utils from '../../utils'
+    import store from '../../vuex/store'
     export default {
       computed: {
         currentRoute () {

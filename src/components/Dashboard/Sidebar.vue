@@ -14,7 +14,7 @@
       </div>
       <!-- end: SEARCH FORM -->
       <!-- start: USER OPTIONS -->
-      <user-info></user-info>
+      <!-- <user-info></user-info> -->
       <!-- end: USER OPTIONS -->
       <!-- start: SIDEBAR -->
       <nav id="sidemenu">
@@ -26,12 +26,12 @@
 </template>
 <script>
   import sideMenu from './Sidemenu.vue'
-  import UserInfo from './UserInfo.vue'
-  import dropdown from '../components/Dropdown.vue'
+  // import UserInfo from './UserInfo.vue'
+  import dropdown from '../Dropdown.vue'
   var Ps = require('perfect-scrollbar')
   export default {
     components: {
-      sideMenu, dropdown, UserInfo
+      sideMenu, dropdown
     },
     ready: function () {
       var container = document.getElementById('sidebox')

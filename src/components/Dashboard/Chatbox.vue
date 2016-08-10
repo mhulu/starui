@@ -59,10 +59,10 @@
 
 <script>
   var Ps = require('perfect-scrollbar')
-  import chatClip from '../components/ChatClip.vue'
-  import Tab from '../components/Tab.vue'
-  import Tabs from '../components/Tabset.vue'
-  import * as utils from '../utils'
+  import chatClip from './ChatClip.vue'
+  import Tab from '../Tab.vue'
+  import Tabs from '../Tabset.vue'
+  import * as utils from '../../utils'
   export default{
     props: ['api'],
     data: function () {

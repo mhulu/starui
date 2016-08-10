@@ -134,7 +134,7 @@ export default {
   },
   vuex: {
     getters: {
-      // token: ({auth}) => auth.token
+      token: ({auth}) => auth.token
     },
     actions: {
       localLogin

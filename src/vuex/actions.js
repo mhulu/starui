@@ -2,14 +2,13 @@ import * as utils from '../utils'
 import api from '../api'
 import { signOut, saveCookie } from '../authService'
 import * as types from './types'
-// var swal = require('sweetalert')
 export const fullscreen = ({ dispatch }) => {
   dispatch(types.TOGGLE_FULLSCREEN)
   utils.fullscreen()
 }
 
 export const showToast = ({dispatch}, content, type = 'error') => {
-  dispatch(types.SHOW_TOAST, {content: content, type: type})
+  dispatch(types.HIDE_TOASTSHOW_TOAST, {content: content, type: type})
 }
 
 export const hideToast = ({dispatch}) => {
@@ -21,15 +20,16 @@ export const logout = ({dispatch, router}) => {
   router.go({path: '/'})
   dispatch(types.LOGOUT)
 }
-export const localLogin = (credentials) => {
+export const localLogin = (store, credentials) => {
   api.localLogin(credentials).then(response => {
     if (!response.ok) {
-      window.console.log('登录失败')
+      return showToast(store, response.data.error_msg || '登录失败')
     }
     const token = response.data.result
     saveCookie('token', token)
+    showToast(store, '登录成功,欢迎光临!', 'success')
   }, response => {
-    window.console.log('登录失败')
+    showToast(store, response.data.error_msg || '登录失败')
   })
 }
 /**

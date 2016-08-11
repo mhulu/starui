@@ -1,17 +1,27 @@
-import { GET_WXTOKEN, LOGOUT } from '../types'
+import { LOGIN_SUCCESS, USERINFO_SUCCESS, USERINFO_FAILURE, UPDATE_USER_INFO, LOGOUT } from '../types'
 import { getCookie } from '../../authService'
-let wxToken = getCookie('wxToken')
 
 const state = {
-  isHold: wxToken !== undefined
+  token: getCookie('token') || null,
+  user: null
 }
 
 const mutations = {
-  [GET_WXTOKEN] () {
-    state.isHold = wxToken !== undefined
+  [LOGIN_SUCCESS] (state, action) {
+    state.token = action.token
   },
-  [LOGOUT] (state) {
-    state.isHold = false
+  [USERINFO_SUCCESS] (state, action) {
+    state.user = action.user
+  },
+  [USERINFO_FAILURE] (state, action) {
+    state.user = null
+  },
+  [LOGOUT] (state, action) {
+    state.user = null
+    state.token = null
+  },
+  [UPDATE_USER_INFO] (state, action) {
+    state.user = action.user
   }
 }
 export default ({

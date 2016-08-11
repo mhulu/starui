@@ -13,7 +13,7 @@ Vue.http.interceptors.push({
     // 这里对请求体进行处理
     request.headers = request.headers || {}
     if (getCookie('token')) {
-      request.headers.Authorization = 'Bearer: ' + getCookie('token').replace(/(^)|($)/g, '')
+      request.headers['Authorization'] = 'Bearer ' + getCookie('token')
     }
     return request
   },

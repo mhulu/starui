@@ -23,11 +23,10 @@ export const logout = ({dispatch, router}) => {
 }
 export const localLogin = (store, credentials) => {
   api.localLogin(credentials).then(response => {
-    // if (!response.ok) {
-    //   window
-    // }
     const token = response.data.result
     saveCookie('token', token)
+    getUserInfo(store)
+    store.dispatch(types.LOGIN_SUCCESS, {token: token})
     swal({
       title: '登录成功',
       text: '系统正在自动跳转... ...',
@@ -37,24 +36,22 @@ export const localLogin = (store, credentials) => {
       window.location = '/'
     })
   }, response => {
-    window.console.log('failed')
+    swal('err')
   })
 }
 /**
  * 获取用户信息(包括菜单 消息等)
  */
-// export const getUserInfo = ({dispatch, router}, id) => {
-//   if (window.sessionStorage.getItem('wemesh.userInfo') === null) {
-//     makeUserInfo(id)
-//   } else {
-//     let json = JSON.parse(window.sessionStorage.getItem('wemesh.userInfo'))
-//     dispatch(types.GET_USER_INFO, {
-//       userInfo: json
-//     })
-//     router.go({name: 'home'})
-//     // return true
-//   }
-// }
+export const getUserInfo = ({dispatch}) => {
+  api.getMe().then(response => {
+    if (!response.ok) {
+      return dispatch(types.USERINFO_FAILURE)
+    }
+    dispatch(types.USERINFO_SUCCESS, {user: response.result})
+  }, response => {
+    dispatch(types.USERINFO_FAILURE)
+  })
+}
 
 /*
 更新用户信息(包括菜单 消息等)

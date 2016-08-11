@@ -5,9 +5,9 @@
             <a class="profile-card-photo" href=""><img :src="userInfo.avatar"></a>
           </div>
           <div class="media-body">
-            <span class="media-heading text-white">{{userInfo.name}}</span>
+            <span class="media-heading text-white">userInfo.name</span>
             <div class="text-small text-white-transparent">
-              {{userInfo.role}}
+              userInfo.role
             </div>
           </div>
           <div class="media-right media-middle">
@@ -15,13 +15,13 @@
               <a href class="dropdown-toggle btn btn-transparent text-white " type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-caret-down"></i> </a>
               <ul class="dropdown-menu pull-right fadeInUp">
                 <li>
-                  <a v-link="{name:'profile'}">个人资料</a>
+                  <a>个人资料</a>
                 </li>
                 <li>
-                  <a v-link="{name:'message'}"> 消息中心 ({{userInfo.messages.length}}) </a>
+                  <a> 消息中心 (userInfo.messages.length) </a>
                 </li>
                 <li>
-                  <a v-link="{path: '/s/lock'}"> 锁定屏幕 </a>
+                  <a> 锁定屏幕 </a>
                 </li>
                 <li class="divider"></li>
                 <li>

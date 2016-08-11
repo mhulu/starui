@@ -5,6 +5,7 @@ import Overlay from './components/Overlay'
 import Home from './components/Home'
 import Dashboard from './components/Dashboard'
 import NotFound from './components/NotFound'
+import NProgress from 'nprogress'
 
 export default function (router) {
   router.map({
@@ -35,7 +36,12 @@ export default function (router) {
     if (transition.to.auth !== false && getCookie('token') === undefined) {
       transition.redirect('/auth/')
     } else {
+      NProgress.start()
       transition.next()
     }
+  })
+
+  router.afterEach(function (transition) {
+    NProgress.done()
   })
 }

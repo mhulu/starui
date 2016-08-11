@@ -1,6 +1,7 @@
 import * as utils from '../utils'
 import api from '../api'
 import { signOut, saveCookie } from '../authService'
+import swal from 'sweetalert'
 import * as types from './types'
 export const fullscreen = ({ dispatch }) => {
   dispatch(types.TOGGLE_FULLSCREEN)
@@ -22,14 +23,21 @@ export const logout = ({dispatch, router}) => {
 }
 export const localLogin = (store, credentials) => {
   api.localLogin(credentials).then(response => {
-    if (!response.ok) {
-      return showToast(store, response.data.error_msg || '登录失败')
-    }
+    // if (!response.ok) {
+    //   window
+    // }
     const token = response.data.result
     saveCookie('token', token)
-    showToast(store, '登录成功,欢迎光临!', 'success')
+    swal({
+      title: '登录成功',
+      text: '系统正在自动跳转... ...',
+      type: 'success',
+      timer: 1000
+    }, function () {
+      window.location = '/'
+    })
   }, response => {
-    showToast(store, response.data.error_msg || '登录失败')
+    window.console.log('failed')
   })
 }
 /**

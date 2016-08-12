@@ -34,7 +34,7 @@ export default function (router) {
   // 访问Dashboard及其子组件需要登录
   router.beforeEach(function (transition) {
     if (transition.to.auth !== false && getCookie('token') === undefined) {
-      transition.redirect('/auth/')
+      transition.redirect('/auth')
     } else {
       NProgress.start()
       transition.next()

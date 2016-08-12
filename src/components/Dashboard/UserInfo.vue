@@ -5,9 +5,9 @@
             <a class="profile-card-photo" href=""><img :src="userInfo.avatar"></a>
           </div>
           <div class="media-body">
-            <span class="media-heading text-white">userInfo.name</span>
+            <span class="media-heading text-white">{{userInfo.name}}</span>
             <div class="text-small text-white-transparent">
-              userInfo.role
+              {{userInfo.role}}
             </div>
           </div>
           <div class="media-right media-middle">
@@ -41,17 +41,15 @@
     components: {
       Dropdown
     },
-    vuex: {
-      getters: {
-        // userInfo: ({userInfo}) => userInfo.items
-      },
-      actions: {
-        // getUserInfo, logout
-        logout
+    data () {
+      return {
+        userInfo: window.localStorage.getItem('userInfo')
       }
     },
-    created () {
-      // this.getUserInfo()
+    vuex: {
+      actions: {
+        logout
+      }
     }
   }
 </script>

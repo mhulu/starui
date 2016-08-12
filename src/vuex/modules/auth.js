@@ -1,26 +1,29 @@
-import { LOGIN_SUCCESS, USERINFO_SUCCESS, USERINFO_FAILURE, UPDATE_USER_INFO, LOGOUT } from '../types'
+import * as types from '../types'
 import { getCookie } from '../../authService'
 
 const state = {
   token: getCookie('token') || null,
-  user: null
+  userInfo: null
 }
 
 const mutations = {
-  [LOGIN_SUCCESS] (state, action) {
+  [types.LOGIN_SUCCESS] (state, action) {
     state.token = action.token
   },
-  [USERINFO_SUCCESS] (state, action) {
-    state.user = action.user
+  [types.REFRESH_TOKEN_SUCCESS] (state, action) {
+    state.token = action.token
   },
-  [USERINFO_FAILURE] (state, action) {
+  [types.USERINFO_SUCCESS] (state, action) {
+    state.userInfo = action.userInfo
+  },
+  [types.USERINFO_FAILURE] (state, action) {
     state.user = null
   },
-  [LOGOUT] (state, action) {
+  [types.LOGOUT] (state, action) {
     state.user = null
     state.token = null
   },
-  [UPDATE_USER_INFO] (state, action) {
+  [types.UPDATE_USER_INFO] (state, action) {
     state.user = action.user
   }
 }

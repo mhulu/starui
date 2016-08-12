@@ -11,7 +11,7 @@
         <!-- main content -->
         <div  class="main-content">
           <div class="wrap-content container">
-           <breadcrumb></breadcrumb>
+           <!-- <breadcrumb></breadcrumb> -->
             <router-view></router-view>
           </div>
         </div>
@@ -25,12 +25,12 @@
   import sidebar from './Sidebar.vue'
   import topNavbar from './TopNavbar.vue'
   import chatbox from './Chatbox.vue'
-  import Breadcrumb from './Breadcrumb.vue'
+  // import Breadcrumb from './Breadcrumb.vue'
   import toaster from '../Toaster.vue'
   export default {
     replace: false,
     components: {
-      toaster, sidebar, topNavbar, chatbox, Breadcrumb
+      toaster, sidebar, topNavbar, chatbox
     }
   }
 </script>

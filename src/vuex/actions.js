@@ -21,6 +21,12 @@ export const logout = ({dispatch, router}) => {
   router.go({path: '/'})
   dispatch(types.LOGOUT)
 }
+/**
+ * 本地登录
+ * @param  {[type]} store       [description]
+ * @param  {[type]} credentials [description]
+ * @return {[type]}             [description]
+ */
 export const localLogin = (store, credentials) => {
   api.localLogin(credentials).then(response => {
     const token = response.data.result
@@ -39,6 +45,23 @@ export const localLogin = (store, credentials) => {
     swal('err')
   })
 }
+export const refreshToken = (store) => {
+  api.refreshToken().then(response => {
+    const token = response.data.result
+    saveCookie('token', token)
+    store.dispatch(types.REFRESH_TOKEN_SUCCESS, {token: token})
+  }, response => {
+    signOut()
+    swal({
+      title: '出现错误',
+      text: '系统自动刷新令牌未能成功，正在返回登录页面... ...',
+      type: 'error',
+      timer: 1000
+    }, function () {
+      window.location = '/'
+    })
+  })
+}
 /**
  * 获取用户信息(包括菜单 消息等)
  */
@@ -47,7 +70,8 @@ export const getUserInfo = ({dispatch}) => {
     if (!response.ok) {
       return dispatch(types.USERINFO_FAILURE)
     }
-    dispatch(types.USERINFO_SUCCESS, {user: response.result})
+    window.localStorage.setItem('userInfo', JSON.stringify(response.data))
+    dispatch(types.USERINFO_SUCCESS, {userInfo: response.data})
   }, response => {
     dispatch(types.USERINFO_FAILURE)
   })

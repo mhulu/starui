@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 import {API_ROOT} from '../config'
 // import swal from 'sweetalert'
-import {getCookie} from '../authService'
+import {getCookie, signOut} from '../authService'
 Vue.use(VueResource)
 
 Vue.http.options.crossOrigin = true
@@ -34,7 +34,8 @@ Vue.http.interceptors.push({
     //   })
     // }
     if (response.status === 401) {
-      window.location.reload()
+      signOut()
+      window.location.pathname = '/auth'
     }
     return response
   }

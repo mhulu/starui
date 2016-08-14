@@ -7,7 +7,7 @@
                   <h4><i class="fa fa-wechat"></i> 消息统计</h4>
                   <div class="panel-body">
                     <ul v-for="list in lists" class="list-unstyled">
-                    <li >{{list}}</li>
+                    <li >asfdasf</li>
                       <li>收消息：20</li>
                       <li>发消息：1122</li>
                     </ul>

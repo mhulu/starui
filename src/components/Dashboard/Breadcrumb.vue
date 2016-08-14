@@ -6,18 +6,18 @@
 </template>
 
 <script>
-    import * as utils from '../../utils'
+    // import * as utils from '../../utils'
     import store from '../../vuex/store'
     export default {
       computed: {
         currentRoute () {
-          var result = this.$route.name
+          var result = store.state.route.path
           window.console.log(result)
-          var menuList = store.state.userInfo.items.menu
-          if (result === 'home') {
+          // var menuList = store.state.userInfo.items.menu
+          if (result === '/') {
             return {'icon': 'dashboard', 'name': '控制面板', 'description': '管理控制中心'}
           }
-          return utils.selectFromJson(menuList, 'url', result)
+          // return utils.selectFromJson(menuList, 'url', result)
         }
       }
     }

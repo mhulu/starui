@@ -1,0 +1,11 @@
+$color: #62eab6;
+#nprogress .bar, #nprogress .spinner {
+	z-index: 1500;
+}
+#nprogress .bar {
+	background: $color;
+}
+#nprogress .spinner-icon{
+	border-top-color: $color;
+	border-left-color: $color;
+} 

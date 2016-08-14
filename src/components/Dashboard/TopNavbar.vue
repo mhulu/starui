@@ -9,7 +9,7 @@
         <button   class="sidebar-mobile-toggler btn pull-left hidden-md hidden-lg" v-on:click="toggleSidebar">
             <i class="fa fa-bars"></i>
         </button>
-        <a class="navbar-brand" href="/"> <img width="32px" src="http://7lrzqf.com1.z0.glb.clouddn.com/images/ucenter-logo.png" alt="WeStar" />微脉事 WeMesh &trade;</a>
+        <a class="navbar-brand" href="/"> <img width="32px" src="http://7lrzqf.com1.z0.glb.clouddn.com/images/ucenter-logo.png" alt="WeStar" /> 微脉事 &trade;</a>
 <!--         <a class="navbar-brand navbar-brand-collapsed" href="/"> <img width="32px" src="http://7lrzqf.com1.z0.glb.clouddn.com/images/ucenter-logo.png" alt="WeStar" />微脉事 WeMesh &trade;</a> -->
                 <button class="btn pull-right menu-toggler  visible-xs-block" id="menu-toggler" v-on:click="navbarCollapsed" >
             <i v-bind:class="isNavbarCollapsed ? 'fa fa-folder-open' : 'fa fa-folder'"></i> <small><i class="fa fa-caret-down margin-left-5"></i></small>         
@@ -39,7 +39,7 @@
         <a class=" dropdown-toggle" type="button"  data-toggle="dropdown"  v-on:click="toggleMsg">
             <i class="fa fa-wechat"></i> 
         </a>
-           <msg-box  api="http://demo1429768.mockable.io/messages"></msg-box>   
+           <!-- <msg-box  api="http://demo1429768.mockable.io/messages"></msg-box>    -->
            </dropdown>  
             <!-- end: MESSAGES DROPDOWN -->
         </ul>

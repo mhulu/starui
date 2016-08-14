@@ -18,7 +18,7 @@ export function removeCookie (name) {
 }
 
 export function signOut () {
-  window.sessionStorage.clear()
+  window.localStorage.clear()
   cookie.remove('token', cookieConfig)
 }
 

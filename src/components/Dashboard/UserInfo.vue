@@ -18,14 +18,14 @@
                   <a>个人资料</a>
                 </li>
                 <li>
-                  <a> 消息中心 (userInfo.messages.length) </a>
+                  <a> 消息中心 (2) </a>
                 </li>
-                <li>
+<!--                 <li>
                   <a> 锁定屏幕 </a>
-                </li>
+                </li> -->
                 <li class="divider"></li>
                 <li>
-                  <a href="#" @click.stop.prevent="logout"> 退出账号 </a>
+                  <a href="#" @click.prevent="logout"> 退出账号 </a>
                 </li>
               </ul>
             </dropdown>
@@ -43,7 +43,7 @@
     },
     data () {
       return {
-        userInfo: window.localStorage.getItem('userInfo')
+        userInfo: JSON.parse(window.localStorage.getItem('userInfo'))
       }
     },
     vuex: {

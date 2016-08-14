@@ -17,9 +17,9 @@ export const hideToast = ({dispatch}) => {
 }
 
 export const logout = ({dispatch, router}) => {
-  signOut()
-  router.go({path: '/'})
   dispatch(types.LOGOUT)
+  signOut()
+  window.location.reload()
 }
 /**
  * 本地登录
@@ -37,12 +37,18 @@ export const localLogin = (store, credentials) => {
       title: '登录成功',
       text: '系统正在自动跳转... ...',
       type: 'success',
-      timer: 1000
+      timer: 2000,
+      showConfirmButton: false
     }, function () {
       window.location = '/'
     })
   }, response => {
-    swal('err')
+    swal({
+      title: '登录失败',
+      text: '您输入的信息有误,请重新输入',
+      type: 'error',
+      confirmButtonText: '重新输入'
+    })
   })
 }
 export const refreshToken = (store) => {
@@ -50,6 +56,7 @@ export const refreshToken = (store) => {
     const token = response.data.result
     saveCookie('token', token)
     store.dispatch(types.REFRESH_TOKEN_SUCCESS, {token: token})
+    window.location = '/'
   }, response => {
     signOut()
     swal({

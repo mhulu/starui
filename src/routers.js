@@ -39,8 +39,6 @@ export default function (router) {
     if ((transition.to.auth !== false && getCookie('token') === undefined) || (transition.to.auth !== false && window.localStorage.getItem('userInfo') === null)) {
       transition.redirect('/auth')
     // 如果当前页面是auth并且有token(即登陆了之后又直接访问登陆页面),则直接跳转到首页
-    } else if (transition.to.auth === false && getCookie('token') !== undefined) {
-      transition.redirect('/')
     } else {
       transition.next()
     }

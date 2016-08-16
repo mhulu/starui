@@ -1,4 +1,4 @@
-import {UserResource, AuthResource} from './resources'
+import {UserResource, AuthResource, MenuResource} from './resources'
 
 export default {
   localLogin: function (data) {
@@ -8,6 +8,9 @@ export default {
     return UserResource.get({action: 'me'})
   },
   refreshToken: function () {
-    return AuthResource.save({action: 'refreshToken'})
+    return AuthResource.get({action: 'refreshToken'})
+  },
+  getMenuList: function () {
+    return MenuResource.get()
   }
 }

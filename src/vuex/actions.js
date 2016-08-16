@@ -95,13 +95,13 @@ export const getUserInfo = ({dispatch}) => {
 /**
  * 获取公众号信息
  */
-// export const getWxmpList = ({dispatch}) => {
-//   api.getWxmpList().then(response => {
-//     dispatch(types.GET_WXMP_LIST, {wxmpList: response.data})
-//   }, response => {
-//     return swal('发生错误', response.data, 'error')
-//   })
-// }
+export const getMenuList = ({dispatch}) => {
+  api.getMenuList().then(response => {
+    dispatch(types.GET_MENU_LIST, {menuList: response.data})
+  }, response => {
+    return swal('发生错误', response.data, 'error')
+  })
+}
 
 // export const deleteWxmp = ({dispatch, router}, id) => {
 //   swal({

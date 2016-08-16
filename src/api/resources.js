@@ -43,3 +43,4 @@ Vue.http.interceptors.push({
 
 export const UserResource = Vue.resource(API_ROOT + 'user{/action}')
 export const AuthResource = Vue.resource(API_ROOT + 'auth{/action}')
+export const MenuResource = Vue.resource(API_ROOT + 'user/menu')

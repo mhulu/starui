@@ -1,19 +1,10 @@
 <template>
   <!-- start: SIDEBAR MENU -->
   <div class="navbar-title cl-effect-1">
-  <a v-link="{path: '/'}" ><i class="fa fa-dedent"></i> 切换公众号</a>
 </div>
   <ul class="main-navigation-menu ">
-  <li><a v-link="{path: '/home'}">
-    <div class="item-content">
-      <div class="item-media"><i class="fa fa-dashboard"></i></div>
-      <div class="item-inner">
-        <span class="title">控制面板</span>
-      </div>
-    </div>
-  </a></li>
     <li v-for="item in menuList" v-link-active>
-      <a v-link="{name: item.url}" @click="showElement($event)">
+      <a v-link="{path: item.url}" @click="showElement($event)">
        <div class="item-content">
         <div class="item-media"><i class="fa fa-{{item.icon}}"></i></div>
         <div class="item-inner">
@@ -31,7 +22,19 @@
 
 <script>
   import * as utils from '../../utils'
+  import { getMenuList } from '../../vuex/actions'
   export default {
+    vuex: {
+      getters: {
+        menuList: state => state.menuList.menuList
+      },
+      actions: {
+        getMenuList
+      }
+    },
+    ready: function () {
+      this.getMenuList()
+    },
     methods: {
       /**
        * 二级子菜单点击后出现

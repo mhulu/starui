@@ -3,6 +3,8 @@ export const UPDATE_USER_INFO = 'UPDATE_USER_INFO'
 export const USERINFO_FAILURE = 'USERINFO_FAILURE'
 export const USERINFO_SUCCESS = 'USERINFO_SUCCESS'
 
+export const GET_MENU_LIST = 'GET_MENU_LIST'
+
 export const SHOW_TOAST = 'SHOW_TOAST'
 export const HIDE_TOAST = 'HIDE_TOAST'
 

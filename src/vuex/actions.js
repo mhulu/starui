@@ -55,8 +55,8 @@ export const refreshToken = (store) => {
   api.refreshToken().then(response => {
     const token = response.data.result
     saveCookie('token', token)
-    store.dispatch(types.REFRESH_TOKEN_SUCCESS, {token: token})
-    window.location = '/'
+    // store.dispatch(types.REFRESH_TOKEN_SUCCESS, {token: token})
+    window.location.reload()
   }, response => {
     signOut()
     swal({
@@ -98,8 +98,6 @@ export const getUserInfo = ({dispatch}) => {
 export const getMenuList = ({dispatch}) => {
   api.getMenuList().then(response => {
     dispatch(types.GET_MENU_LIST, {menuList: response.data})
-  }, response => {
-    return swal('发生错误', response.data, 'error')
   })
 }
 

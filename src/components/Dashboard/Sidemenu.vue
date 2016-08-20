@@ -13,7 +13,7 @@
       </div>
     </a>
     <ul v-if="item.submenu" class="sub-menu fadeInRight">
-      <li class="cl-effect-1" v-for="sub in item.submenu" v-link-active><a v-link="{path: '/home/' + item.url + '/' + sub.url}">{{sub.name}}</a></li>
+      <li class="cl-effect-1" v-for="sub in item.submenu" v-link-active><a v-link="{path: '/' + item.url + '/' + sub.url}">{{sub.name}}</a></li>
     </ul>
   </li>  
 </ul>

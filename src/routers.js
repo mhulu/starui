@@ -2,12 +2,16 @@ import {getCookie} from './authService'
 
 import Login from './components/Auth/Login'
 import Overlay from './components/Overlay'
+import Profile from './components/Profile'
+import Me from './components/Profile/Me'
+import Security from './components/Profile/Security'
 import Home from './components/Home'
 import Dashboard from './components/Dashboard'
 import NotFound from './components/NotFound'
 
 export default function (router) {
   router.map({
+    // Overlay pages
     '/auth': {
       component: Overlay,
       auth: false,
@@ -17,14 +21,24 @@ export default function (router) {
         }
       }
     },
+    // Dashboard
     '/': {
       component: Dashboard,
       subRoutes: {
+        // HOME
         '/': {
           component: Home
         },
-        '/user': {
-          component: Overlay
+        '/profile': {
+          component: Profile,
+          subRoutes: {
+            '/me': {
+              component: Me
+            },
+            '/security': {
+              component: Security
+            }
+          }
         }
       }
     },

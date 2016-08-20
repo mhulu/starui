@@ -12,7 +12,6 @@ Vue.use(VueResource)
 Vue.use(VueRouter)
 
 Vue.use(VueValidator)
-// Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('content')
 // Object.keys(filters).forEach(k => Vue.filter(k, filters[k]))
 const router = new VueRouter({
   hashbang: false

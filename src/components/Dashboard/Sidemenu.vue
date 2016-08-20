@@ -6,7 +6,7 @@
     <li v-for="item in menuList" v-link-active>
       <a v-link="{path: item.url}" @click="showElement($event)">
        <div class="item-content">
-        <div class="item-media"><i class="fa fa-{{item.icon}}"></i></div>
+        <div class="item-media"><i class="fa {{item.icon}}"></i></div>
         <div class="item-inner">
           <span class="title">{{item.name}}</span><i v-if="item.submenu" class="fa fa-angle-down icon-arrow"></i>
         </div>

@@ -55,7 +55,6 @@ export const refreshToken = (store) => {
   api.refreshToken().then(response => {
     const token = response.data.result
     saveCookie('token', token)
-    // store.dispatch(types.REFRESH_TOKEN_SUCCESS, {token: token})
     window.location.reload()
   }, response => {
     signOut()

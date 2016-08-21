@@ -8,7 +8,6 @@ export const GET_MENU_LIST = 'GET_MENU_LIST'
 export const SHOW_TOAST = 'SHOW_TOAST'
 export const HIDE_TOAST = 'HIDE_TOAST'
 
-export const REFRESH_TOKEN_SUCCESS = 'REFRESH_TOKEN_SUCCESS'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 export const LOGOUT = 'LOGOUT'

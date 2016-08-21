@@ -12,7 +12,7 @@
         <div  class="main-content">
           <div class="wrap-content container">
            <breadcrumb></breadcrumb>
-            <router-view transition="fadeInRight" transition-mode="out-in"></router-view>
+            <router-view transition="fade" transition-mode="out-in"></router-view>
           </div>
         </div>
         <!-- / main content -->

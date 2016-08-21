@@ -11,7 +11,7 @@ Vue.http.options.emulateJSON = true
 Vue.http.interceptors.push((request, next) => {
   request.headers = request.headers || {}
   if (getCookie('token')) {
-    request.headers['Authorization'] = 'Bearer' + getCookie('token')
+    request.headers['Authorization'] = 'Bearer ' + getCookie('token')
   }
   next((response) => {
     if (response.status === 401) {

@@ -25,17 +25,6 @@ export function findObj (obj) {
 }
 
 /**
- * 遍历一个对象,取出指定k-v 的一组
- */
-export function selectFromJson (obj, key, value) {
-  for (var i = 0; i < obj.length; i++) {
-    if (obj[i][key] === value) {
-      return obj[i]
-    }
-  }
-}
-
-/**
  * 从当前的url中提取指定部分名称
  * @param 传入的路径,得有/.../这种斜杠喔
  * @param  {int} index [位置,通常0为父级]

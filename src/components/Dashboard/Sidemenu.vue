@@ -4,7 +4,7 @@
 </div>
   <ul class="main-navigation-menu ">
     <li v-for="item in menuList" v-link-active>
-      <a v-link="{path: item.url}" @click="showElement($event)">
+      <a v-link="{path: item.url, exact: true}" @click="showElement($event)">
        <div class="item-content">
         <div class="item-media"><i class="fa {{item.icon}}"></i></div>
         <div class="item-inner">
@@ -13,7 +13,7 @@
       </div>
     </a>
     <ul v-if="item.submenu" class="sub-menu fadeInRight">
-      <li class="cl-effect-1" v-for="sub in item.submenu" v-link-active><a v-link="{path: '/' + item.url + '/' + sub.url}">{{sub.name}}</a></li>
+      <li class="cl-effect-1" v-for="sub in item.submenu" v-link-active><a v-link="{path: sub.url}" @click="activeLi($event)">{{sub.name}}</a></li>
     </ul>
   </li>  
 </ul>
@@ -26,7 +26,8 @@
   export default {
     vuex: {
       getters: {
-        menuList: state => state.menuList.menuList
+        menuList: state => state.menuList.menuList,
+        currentPath: state => state.route.path
       },
       actions: {
         getMenuList
@@ -43,10 +44,18 @@
        */
       showElement: function (event) {
         var el = event.currentTarget.nextSibling.nextSibling
+        var element = document.querySelectorAll('#sidemenu .main-navigation-menu .active')[0]
+        if (typeof element !== 'undefined') {
+          utils.removeClass(element, 'active')
+        }
         if (el.tagName === 'UL') {
           event.preventDefault()
           utils.toggleClass('.sub-menu', el, 'show')
         }
+      },
+      activeLi: function (event) {
+        var el = event.currentTarget
+        utils.toggleClass('.sub-menu', el.parentNode.parentNode.parentNode, 'active')
       }
     }
   }
@@ -54,8 +63,6 @@
 <style>
     .main-navigation-menu > .v-link-active {
     border-left: 4px solid #F18636 !important;
-    -webkit-transition: all 0.1s;
-    transition: all 0.1s;
     background: #263244;
     box-shadow: none;
   }

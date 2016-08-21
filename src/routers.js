@@ -2,7 +2,6 @@ import {getCookie} from './authService'
 
 import Login from './components/Auth/Login'
 import Overlay from './components/Overlay'
-import Profile from './components/Profile'
 import Me from './components/Profile/Me'
 import Security from './components/Profile/Security'
 import Home from './components/Home'
@@ -29,16 +28,11 @@ export default function (router) {
         '/': {
           component: Home
         },
-        '/profile': {
-          component: Profile,
-          subRoutes: {
-            '/me': {
-              component: Me
-            },
-            '/security': {
-              component: Security
-            }
-          }
+        '/profile/me': {
+          component: Me
+        },
+        '/profile/security': {
+          component: Security
         }
       }
     },

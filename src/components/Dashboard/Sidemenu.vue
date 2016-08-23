@@ -33,9 +33,6 @@
         getMenuList
       }
     },
-    ready: function () {
-      this.getMenuList()
-    },
     methods: {
       /**
        * 二级子菜单点击后出现

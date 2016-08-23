@@ -32,7 +32,9 @@ export const localLogin = (store, credentials) => {
     const token = response.data.result
     saveCookie('token', token)
     getUserInfo(store)
+    getMenuList(store)
     store.dispatch(types.LOGIN_SUCCESS, {token: token})
+    store.dispatch(types.GET_MENU_LIST, {menuList: response.data})
     swal({
       title: '登录成功',
       text: '系统正在自动跳转... ...',

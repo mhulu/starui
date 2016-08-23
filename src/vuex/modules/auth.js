@@ -17,14 +17,14 @@ const mutations = {
     state.userInfo = action.userInfo
   },
   [types.USERINFO_FAILURE] (state, action) {
-    state.user = null
+    state.userInfo = null
   },
   [types.LOGOUT] (state, action) {
-    state.user = null
+    state.userInfo = null
     state.token = null
   },
   [types.UPDATE_USER_INFO] (state, action) {
-    state.user = action.user
+    state.userInfo = action.userInfo
   }
 }
 export default ({

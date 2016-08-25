@@ -112,7 +112,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>
-                                                上传照片
+                                                上传头像
                                             </label>
                                             <div>
                                                 <div class="user-image">
@@ -123,7 +123,7 @@
                                                 <div class="user-image-buttons-edit">
                                                     <span class="btn btn-primary btn-file">
                                               <i class="fa fa-pencil"></i>
-                                              <input type="file" accept="image/*" v-on:change="uploadChanges">
+                                              <input type="file" v-on:change="uploadChanges">
                                           </span>
                                                     <span class="btn btn-danger" @click="removeImage()"><i class="fa fa-times"></i> </span>
                                                 </div>

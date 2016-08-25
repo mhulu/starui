@@ -24,7 +24,7 @@
           if (result === '/') {
             return {'icon': 'fa-dashboard', 'name': '控制面板', 'description': '管理控制中心'}
           } else {
-            var collect = utils.where(this.menuList, {url: result.split('/')[1]})
+            var collect = utils.where(this.menuList, {url: '/' + result.split('/')[1]})
             return utils.first(utils.toArray(collect))
           }
         }

@@ -8,9 +8,13 @@
 <script>
     import * as utils from 'underscore'
     export default {
+      data () {
+        return {
+          menuList: JSON.parse(window.localStorage.getItem('userInfo')).menuList
+        }
+      },
       vuex: {
         getters: {
-          menuList: state => state.menuList.menuList,
           currentPath: state => state.route.path
         }
       },

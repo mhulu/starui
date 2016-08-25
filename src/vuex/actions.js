@@ -32,9 +32,7 @@ export const localLogin = (store, credentials) => {
     const token = response.data.result
     saveCookie('token', token)
     getUserInfo(store)
-    getMenuList(store)
     store.dispatch(types.LOGIN_SUCCESS, {token: token})
-    store.dispatch(types.GET_MENU_LIST, {menuList: response.data})
     swal({
       title: '登录成功',
       text: '系统正在自动跳转... ...',
@@ -92,15 +90,6 @@ export const getUserInfo = ({dispatch}) => {
 //   makeUserInfo({dispatch, router}, weid)
 //   makeCookie({dispatch}, weid)
 // }
-
-/**
- * 获取公众号信息
- */
-export const getMenuList = ({dispatch}) => {
-  api.getMenuList().then(response => {
-    dispatch(types.GET_MENU_LIST, {menuList: response.data})
-  })
-}
 
 // export const deleteWxmp = ({dispatch, router}, id) => {
 //   swal({

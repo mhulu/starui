@@ -33,23 +33,22 @@
         </div>
       </div>
 </template>
-
 <script>
-  import { logout } from '../../vuex/actions'
-  import Dropdown from '../Dropdown.vue'
-  export default {
-    components: {
-      Dropdown
-    },
-    data () {
-      return {
-        userInfo: JSON.parse(window.localStorage.getItem('userInfo'))
-      }
-    },
-    vuex: {
-      actions: {
-        logout
+    import { logout } from '../../vuex/actions'
+    import Dropdown from '../Dropdown'
+    export default {
+      data () {
+        return {
+          userInfo: JSON.parse(window.localStorage.getItem('userInfo'))
+        }
+      },
+      vuex: {
+        actions: {
+          logout
+        }
+      },
+      components: {
+        Dropdown
       }
     }
-  }
 </script>

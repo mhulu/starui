@@ -22,15 +22,15 @@
 
 <script>
   import * as utils from '../../utils'
-  import { getMenuList } from '../../vuex/actions'
   export default {
     vuex: {
       getters: {
-        menuList: state => state.menuList.menuList,
         currentPath: state => state.route.path
-      },
-      actions: {
-        getMenuList
+      }
+    },
+    data () {
+      return {
+        menuList: JSON.parse(window.localStorage.getItem('userInfo')).menuList
       }
     },
     methods: {

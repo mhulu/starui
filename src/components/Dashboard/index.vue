@@ -22,12 +22,21 @@
 </template>
 
 <script>
+  import { getUserInfo } from '../../vuex/actions'
   import sidebar from './Sidebar.vue'
   import topNavbar from './TopNavbar.vue'
   import chatbox from './Chatbox.vue'
   import Breadcrumb from './Breadcrumb.vue'
   import toaster from '../Toaster.vue'
   export default {
+    vuex: {
+      actions: {
+        getUserInfo
+      }
+    },
+    beforeCompile () {
+      this.getUserInfo()
+    },
     replace: false,
     components: {
       toaster, sidebar, topNavbar, chatbox, Breadcrumb

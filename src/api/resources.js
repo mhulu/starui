@@ -19,6 +19,5 @@ Vue.http.interceptors.push((request, next) => {
   })
 })
 
-export const UserResource = Vue.resource(API_ROOT + 'user{/action}')
-export const AuthResource = Vue.resource(API_ROOT + 'auth{/action}')
-export const MenuResource = Vue.resource(API_ROOT + 'user/menu')
+export const UserResource = Vue.resource(API_ROOT + 'user{/id}')
+export const AuthResource = Vue.resource(API_ROOT + 'auth{/id}')

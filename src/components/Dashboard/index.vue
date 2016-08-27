@@ -34,7 +34,7 @@
         getUserInfo
       }
     },
-    beforeCompile () {
+    created () {
       this.getUserInfo()
     },
     replace: false,

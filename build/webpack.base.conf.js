@@ -50,6 +50,10 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.styl$/,
+        loader: 'css-loader!stylus-loader?paths=node_modules/bootstrap-stylus/stylus/'
+      },
+      {
         test: /\.js$/,
         loader: 'babel',
         include: projectRoot,

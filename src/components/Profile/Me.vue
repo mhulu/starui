@@ -62,36 +62,57 @@
                   </div>
                 </tab>
                 <tab header="修改资料">
-                  <form action="/" method="post" @submit.prevent="onSubmit">
+                <validator name="profile">
+                  <form novalidate @submit.prevent="onSubmit">
                             <fieldset>
                                 <legend>
                                     基本信息
                                 </legend>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="form-group">
+                                            <div class="row">
+                                              <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
                                             <label class="control-label">
-                                                真实姓名
+                                                姓名
                                             </label>
-                                            <input type="text" placeholder="输入您的真实姓名" class="form-control" name="name" v-model="userInfo.name" required>
+                                            <input type="text" placeholder="输入您的姓名" class="form-control underline input-lg" name="name" :value="userInfo.name" 
+                                            v-validate:name="{ required: true, minlength: 2, maxlength: 15, name:true }">
+                                            <p class="text-danger" v-if="$profile.name.required">姓名需要填写</p>
+                                            <p class="text-danger" v-if="$profile.name.minlength">姓名长度不能少于2个字符</p>
+                                            <p class="text-danger" v-if="$profile.name.maxlength">姓名长度不能多于15个字符</p>
                                         </div>
+                                              </div>
+                                              <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                <label class="control-label">
+                                                出生日期
+                                                </label>
+                                                  <datepicker :time.sync="time" :option="timeoption">                                               
+                                                  </datepicker>
+                                                </div>
+                                              </div>
+                                            </div>
                                         <div class="form-group">
                                             <label class="control-label">
                                                 手机号码
                                             </label>
-                                            <input type="text" placeholder="输入您的手机号码" class="form-control" name="mobile" v-model="userInfo.mobile" required>
+                                            <input type="text" placeholder="输入您的手机号码" class="form-control underline input-lg" name="mobile" v-model="userInfo.mobile"
+                                            v-validate:mobile="{ required: true, mobile:true }">
+                                            <p class="text-danger" v-if="$profile.mobile.required">手机号码需要填写</p>
+                                            <p class="text-danger" v-if="$profile.mobile.mobile">手机号码格式不正确</p>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
                                                 电子邮箱
                                             </label>
-                                            <input type="email" placeholder="输入您的邮箱地址" class="form-control" name="email" v-model="userInfo.email">
+                                            <input type="email" placeholder="输入您的邮箱地址" class="form-control underline input-lg" name="email" v-model="userInfo.email">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
                                                 籍贯
                                             </label>
-                                            <input type="text" placeholder="输入您的籍贯" class="form-control" name="birthplace" v-model="userInfo.birthplace">
+                                            <input type="text" placeholder="输入您的籍贯" class="form-control underline input-lg" name="birthplace" v-model="userInfo.birthplace">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -132,8 +153,9 @@
                                     </div>
                                 </div>
                             </fieldset>
-                            <div class="center"><button type="submit" class="btn btn-lg btn-blue"><i class="fa fa-edit"></i> 确认无误，提交修改</button></div>
+                            <div class="center"><button type="submit" class="btn btn-lg btn-blue" :disabled="$profile.invalid"><i class="fa fa-edit"></i> 确认无误，提交修改</button></div>
                         </form>
+                        </validator>
                 </tab>
               </tabs>
             </div>
@@ -148,10 +170,22 @@
   var VueStrap = require('vue-strap/dist/vue-strap.min.js')
   var tabs = VueStrap.tabset
   var tab = VueStrap.tab
+  import datepicker from '../Datepicker.vue'
   export default {
     data () {
       return {
-        userInfo: JSON.parse(window.localStorage.getItem('userInfo'))
+        userInfo: JSON.parse(window.localStorage.getItem('userInfo')),
+        time: '1977-7-15',
+        timeoption: {
+          type: 'day',
+          week: ['一', '二', '三', '四', '五', '六', '日'],
+          month: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+          format: 'YYYY-MM-DD'
+        },
+        buttons: {
+          ok: '确定',
+          cancel: '取消'
+        }
       }
     },
     methods: {
@@ -167,12 +201,21 @@
         }
       }
     },
+    created () {
+      this.time = this.userInfo.birthYear.toString() + '-' + this.userInfo.birthMonth.toString() + '-' + this.userInfo.birthDay
+    },
     components: {
-      tabs, tab
+      tabs, tab, datepicker
     }
   }
 </script>
 <style>
+  thead th {
+    font-size: 16px;
+  }
+  .input-lg {
+    text-align: center;
+  }
   .user-image img {
     max-width: 150px;
 }

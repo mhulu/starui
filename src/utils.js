@@ -98,3 +98,28 @@ export function toggleClass (wrapperSelector, targetSelector, className) {
     targetSelector.classList.add(className)
   }
 }
+
+export function serialize (form) {
+  var field = []
+  var l = []
+  var s = []
+  if (typeof form === 'object' && form.nodeName === 'FORM') {
+    var len = form.elements.length
+    for (var i = 0; i < len; i++) {
+      field = form.elements[i]
+      if (field.name && !field.disabled && field.type !== 'file' && field.type !== 'reset' && field.type !== 'button' && field.type !== 'submit') {
+        if (field.type === 'select-multiple') {
+          l = form.elements[i].options.length
+          for (var j = 0; j < l; j++) {
+            if (field.options[j].selected) {
+              s[s.length] = encodeURIComponent(field.name) + '=' + encodeURIComponent(field.options[j].value)
+            } else if ((field.type !== 'checkbox' && field.type !== 'radio') || field.checked) {
+              s[s.length] = encodeURIComponent(field.name) + '=' + encodeURIComponent(field.value)
+            }
+          }
+        }
+      }
+      return s.join('&').replace(/%20/g, '+')
+    }
+  }
+}

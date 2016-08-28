@@ -149,7 +149,7 @@
                                             <label class="control-label">
                                                 <i class="fa fa-user"></i> 姓名
                                             </label>
-                                            <input type="text" placeholder="输入您的姓名" class="form-control input-lg" :value="userInfo.name" 
+                                            <input type="text" placeholder="输入您的姓名" id="name" class="form-control input-lg" v-model="userInfo.name" 
                                             v-validate:name="{ required: true, minlength: 2, maxlength: 15, name:true }">
                                             <p class="text-danger" v-if="$profile.name.minlength">姓名长度不能少于2个字符</p>
                                             <p class="text-danger" v-if="$profile.name.maxlength">姓名长度不能多于15个字符</p>
@@ -167,7 +167,7 @@
                                           <div class="col-md-6">
                                             <div class="form-group">
                                             <label class="control-label"><i class="fa fa-mobile-phone"></i> 手机号码</label>
-                                            <input type="text" placeholder="输入您的手机号码" class="form-control input-lg" name="mobile" :value="userInfo.mobile"
+                                            <input type="text" placeholder="输入您的手机号码" id="mobile" class="form-control input-lg" name="mobile" v-model="userInfo.mobile"
                                             v-validate:mobile="{ required: true, mobile:true }">
                                             <p class="text-danger" v-if="$profile.mobile.mobile">手机号码格式不正确</p>
                                         </div>
@@ -175,21 +175,21 @@
                                           <div class="col-md-6">
                                             <div class="form-group">
                                             <label class="control-label"><i class="fa fa-qq"></i> QQ号码</label>
-                                            <input type="text" class="form-control input-lg" :value="userInfo.qq" v-validate:qq="{ qq:true }">      
+                                            <input type="text" class="form-control input-lg" id="qq" v-model="userInfo.qq" v-validate:qq="{ qq:true }">      
                                             <p class="text-danger" v-if="$profile.qq.qq">QQ号码格式不正确</p>                                      
                                         </div>
                                           </div>
                                         </div>
                                         <div class="form-group">
                                           <label class="control-label"><i class="fa fa-envelope-o"></i> 电子邮箱</label>
-                                            <input type="email" placeholder="输入您的邮箱地址" class="form-control input-lg" name="email" :value="userInfo.email" v-validate:email="{ email:true }">
+                                            <input type="email" placeholder="输入您的邮箱地址" id="email" class="form-control input-lg" name="email" v-model="userInfo.email" v-validate:email="{ email:true }">
                                             <p class="text-danger" v-if="$profile.email.email">电子邮件格式不正确</p> 
                                         </div>
 <!--                                         <div class="form-group">
                                             <label class="control-label">
                                                 <i class="fa fa-map-marker"></i> 籍贯
                                             </label>
-                                            <input type="text" placeholder="输入您的籍贯" class="form-control input-lg" name="birthplace" :value="userInfo.birthplace">
+                                            <input type="text" placeholder="输入您的籍贯" class="form-control input-lg" name="birthplace" v-model="userInfo.birthplace">
                                         </div> -->
                                     </div>
                                     <div class="col-md-6">
@@ -202,7 +202,7 @@
                                                 <label for="male">
                                                     男
                                                 </label>
-                                                <input type="radio" id="female" name="sex" value="女" v-model="userInfo.sex">
+                                                <input type="radio" id="female" name="sex" value="女" v-model="userInfo.sex" v-validate:sex="{required:true}">
                                                 <label for="female">
                                                     女
                                                 </label>
@@ -275,7 +275,7 @@
     },
     methods: {
       onSubmit () {
-        window.console.log(this.userInfo.name)
+        window.console.log(this.userInfo)
       },
       activEditTab () {
         this.activeIndex = 1

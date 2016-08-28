@@ -29,6 +29,7 @@ export default function (router) {
           component: Home
         },
         '/profile/me': {
+          name: 'me',
           component: Me
         },
         '/profile/security': {

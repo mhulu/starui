@@ -786,7 +786,7 @@ table {
       <input
       type="text"
       title="input date"
-      class="cov-datepicker form-control underline input-lg"
+      class="cov-datepicker form-control input-lg"
       readonly="readonly"
       placeholder="{{option.placeholder}}"
       v-model="time"

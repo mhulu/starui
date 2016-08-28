@@ -76,6 +76,69 @@ h1, h2, h3, h4, h5 {
         font-weight: 600;
     }
 }
+/* ---------------------------------------------------------------------- */
+/*  Labels and Badges
+/* ---------------------------------------------------------------------- */
+.badge {
+  background-color: #58748B;
+}
+
+.badge-success {
+  background-color: #5CB85C;
+}
+
+.badge-success[href]:hover, .badge-success[href]:focus {
+  background-color: #449D44;
+}
+
+.badge-warning {
+  background-color: #F0AD4E;
+}
+
+.badge-warning[href]:hover, .badge-warning[href]:focus {
+  background-color: #EC971F;
+}
+
+.badge-info {
+  background-color: #5BC0DE;
+}
+
+.badge-info[href]:hover, .badge-info[href]:focus {
+  background-color: #31B0D5;
+}
+
+.badge-danger {
+  background-color: #D9534F;
+}
+
+.badge-danger[href]:hover, .badge-danger[href]:focus {
+  background-color: #C9302C;
+}
+
+.badge-new {
+  background-color: #007AFF;
+  border-radius: 12px 12px 12px 12px !important;
+  font-size: 11px !important;
+  font-weight: 300;
+  height: 18px;
+  padding: 3px 6px;
+  text-align: center;
+  text-shadow: none !important;
+  vertical-align: middle;
+}
+
+.label-default {
+  background-color: #58748B;
+}
+
+.label {
+  font-size: 85% !important;
+  padding: 0.4em 0.6em !important;
+}
+
+.label-inverse, .badge-inverse {
+  background-color: #2C2F3B;
+}
     .label-purple {
         background-color: #6e5c9a;
     }

@@ -12,13 +12,13 @@
           </div>
           <div class="media-right media-middle">
             <dropdown>
-              <a href class="dropdown-toggle btn btn-transparent text-white " type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-caret-down"></i> </a>
+              <a href class="dropdown-toggle btn btn-transparent text-white " type="button" @click.stop.prevent="goUserInfo"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-caret-down"></i> </a>
               <ul class="dropdown-menu pull-right fadeInUp">
                 <li>
-                  <a>个人资料</a>
+                  <a v-link="{path:'/profile/me'}">个人资料</a>
                 </li>
                 <li>
-                  <a> 消息中心 (2) </a>
+                  <a v-link="{path:'/profile/security'}"> 修改密码 </a>
                 </li>
 <!--                 <li>
                   <a> 锁定屏幕 </a>
@@ -34,7 +34,7 @@
       </div>
 </template>
 <script>
-    import { logout } from '../../vuex/actions'
+    import { logout, getUserInfo } from '../../vuex/actions'
     import Dropdown from '../Dropdown'
     export default {
       data () {
@@ -44,7 +44,15 @@
       },
       vuex: {
         actions: {
-          logout
+          logout, getUserInfo
+        }
+      },
+      methods: {
+        goUserInfo () {
+          // 将本组件的显示信息更改
+          this.userInfo = JSON.parse(window.localStorage.getItem('userInfo'))
+          // 执行vuex的actions,更改全局的userInfo
+          this.getUserInfo()
         }
       },
       components: {

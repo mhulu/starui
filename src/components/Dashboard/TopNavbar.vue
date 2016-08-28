@@ -37,7 +37,7 @@
             <!-- start: MESSAGES DROPDOWN -->    
             <dropdown class="dropdown">
         <a class=" dropdown-toggle" type="button"  data-toggle="dropdown"  v-on:click="toggleMsg">
-            <i class="fa fa-wechat"></i> 
+            <i class="fa fa-envelope"></i> 
         </a>
            <!-- <msg-box  api="http://demo1429768.mockable.io/messages"></msg-box>    -->
            </dropdown>  

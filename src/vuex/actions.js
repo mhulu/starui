@@ -83,6 +83,24 @@ export const getUserInfo = ({dispatch}) => {
   })
 }
 
+export const updateUserInfo = ({dispatch}, id, data) => {
+  api.updateUser(id, data).then(response => {
+    swal({
+      title: '操作成功',
+      text: '个人资料更改成功',
+      type: 'success',
+      timer: 2000
+    })
+    dispatch(types.UPDATE_USER_INFO, {userInfo: response.data})
+  }, response => {
+    swal({
+      title: '操作失败',
+      text: '个人资料更改失败，这可能由于您的网络不畅通造成，或请及时联系管理员',
+      type: 'error',
+      timer: 2000
+    })
+  })
+}
 /*
 更新用户信息(包括菜单 消息等)
  */

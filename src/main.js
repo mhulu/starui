@@ -5,11 +5,10 @@ import VueResource from 'vue-resource'
 import registerRouters from './routers'
 import App from './App.vue'
 import { sync } from 'vuex-router-sync'
-// import VueMask from 'v-mask'
 import VueValidator from 'vue-validator'
+import { fromNow } from './filters'
 import store from './vuex/store'
 
-// Vue.use(VueMask)
 Vue.use(VueResource)
 Vue.use(VueRouter)
 
@@ -23,6 +22,7 @@ Vue.validator('qq', function (val) {
 Vue.validator('email', function (val) {
   return /\S+@\S+\.\S+/.test(val)
 })
+Vue.filter('fromNow', fromNow)
 // Object.keys(filters).forEach(k => Vue.filter(k, filters[k]))
 const router = new VueRouter({
   hashbang: false

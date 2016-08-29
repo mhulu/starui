@@ -12,7 +12,7 @@
           </div>
           <div class="media-right media-middle">
             <dropdown>
-              <a href class="dropdown-toggle btn btn-transparent text-white " type="button" @click.stop.prevent="goUserInfo"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-caret-down"></i> </a>
+              <a href class="dropdown-toggle btn btn-transparent text-white " type="button" @click.stop.prevent="goUserInfo($event)"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-cog icon-flash"></i> </a>
               <ul class="dropdown-menu pull-right fadeInUp">
                 <li>
                   <a v-link="{path:'/profile/me'}">个人资料</a>
@@ -36,6 +36,7 @@
 <script>
     import { logout, getUserInfo } from '../../vuex/actions'
     import Dropdown from '../Dropdown'
+    import * as utils from '../../utils'
     export default {
       data () {
         return {
@@ -48,11 +49,13 @@
         }
       },
       methods: {
-        goUserInfo () {
-          // 将本组件的显示信息更改
-          this.userInfo = JSON.parse(window.localStorage.getItem('userInfo'))
+        goUserInfo (event) {
           // 执行vuex的actions,更改全局的userInfo
           this.getUserInfo()
+          // 将本组件的显示信息更改
+          this.userInfo = JSON.parse(window.localStorage.getItem('userInfo'))
+          // 取消动画css
+          utils.removeClass(event.currentTarget.childNodes[0], 'icon-flash')
         }
       },
       components: {

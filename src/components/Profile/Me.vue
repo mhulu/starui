@@ -123,7 +123,7 @@
                                                 <li class="timeline-item" :class="event.type">
                                                     <div class="margin-left-15">
                                                         <div class="text-muted text-small">
-                                                          {{event.created_at | moment}}
+                                                          {{event.created_at | fromNow}}
                                                         </div>
                                                         <p>{{event.content}}</p>
                                                     </div>
@@ -185,12 +185,6 @@
                                             <input type="email" placeholder="输入您的邮箱地址" id="email" class="form-control input-lg" name="email" v-model="userInfo.email" v-validate:email="{ email:true }">
                                             <p class="text-danger" v-if="$profile.email.email">电子邮件格式不正确</p> 
                                         </div>
-<!--                                         <div class="form-group">
-                                            <label class="control-label">
-                                                <i class="fa fa-map-marker"></i> 籍贯
-                                            </label>
-                                            <input type="text" placeholder="输入您的籍贯" class="form-control input-lg" name="birthplace" v-model="userInfo.birthplace">
-                                        </div> -->
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -249,7 +243,7 @@
   var tabs = VueStrap.tabset
   var tab = VueStrap.tab
   import datepicker from '../Datepicker.vue'
-  import moment from 'moment'
+  import {updateUserInfo} from '../../vuex/actions'
   export default {
     data () {
       return {
@@ -268,14 +262,24 @@
         }
       }
     },
-    filters: {
-      moment: function (time) {
-        return moment(time).locale('zh-cn').fromNow()
+    vuex: {
+      actions: {
+        updateUserInfo
       }
     },
     methods: {
       onSubmit () {
-        window.console.log(this.userInfo)
+        var formData = {
+          id: this.userInfo.id,
+          name: this.userInfo.name,
+          sex: this.userInfo.sex,
+          birthday: this.time,
+          mobile: this.userInfo.mobile,
+          qq: this.userInfo.qq,
+          email: this.userInfo.email,
+          avatar: this.userInfo.avatar
+        }
+        this.updateUserInfo(formData.id, formData)
       },
       activEditTab () {
         this.activeIndex = 1

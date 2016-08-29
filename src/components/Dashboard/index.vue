@@ -12,7 +12,12 @@
         <div  class="main-content">
           <div class="wrap-content container">
            <breadcrumb></breadcrumb>
-            <router-view transition="fade" transition-mode="out-in"></router-view>
+            <router-view
+             keep-alive
+             transition="fade"
+             transition-mode="out-in"
+             >
+             </router-view>
           </div>
         </div>
         <!-- / main content -->
@@ -22,7 +27,6 @@
 </template>
 
 <script>
-  // import { getUserInfo } from '../../vuex/actions'
   import sidebar from './Sidebar.vue'
   import topNavbar from './TopNavbar.vue'
   import chatbox from './Chatbox.vue'

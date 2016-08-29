@@ -20,7 +20,7 @@
         toggle.style.borderRadius = '4px'
         toggle.addEventListener('click', this.toggleDropdown)
       }
-      this._closeEvent = EventListener.listen(window, 'click', (e) => {
+      this._closeEvent = EventListener.listen(window, 'mouseout', (e) => {
         if (!el.contains(e.target)) el.classList.remove('open')
       })
     },

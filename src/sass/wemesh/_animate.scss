@@ -213,3 +213,36 @@
   -webkit-animation: fadeInRight .3s;
           animation: fadeInRight .3s;
 }
+
+.fa-spin, .glyphicon-spin {
+  -webkit-animation: spin 2000ms infinite linear;
+  animation: spin 2000ms infinite linear;
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+/* FLASHING */
+@keyframes flash {
+  0%,100%,50%{opacity:1}
+  25%,75%{opacity:0}
+}
+.icon-flash {
+  animation: flash 3s ease infinite;
+}

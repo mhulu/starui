@@ -1,5 +1,5 @@
 // 格式化发布时间
-exports.customTime = item => {
+exports.fromNow = item => {
   let nowTime = new Date().getTime()
   let minuteTime = 60 * 1000
   let hourTime = 60 * minuteTime

@@ -72,19 +72,6 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <table class="table table-condensed">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="3">其它信息</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>IM组</td>
-                                                <td>暂未设置</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                     <div class="center">
                                         <a class="btn btn-primary" href="#" @click.stop.prevent=activEditTab>
                                             更改个人资料
@@ -243,12 +230,11 @@
   var tabs = VueStrap.tabset
   var tab = VueStrap.tab
   import datepicker from '../Datepicker.vue'
-  import {updateUserInfo} from '../../vuex/actions'
+  import {updateAuthUserInfo} from '../../vuex/actions'
   export default {
     data () {
       return {
         activeIndex: 0,
-        userInfo: JSON.parse(window.localStorage.getItem('userInfo')),
         time: '',
         timeoption: {
           type: 'day',
@@ -263,8 +249,11 @@
       }
     },
     vuex: {
+      getters: {
+        userInfo: state => state.auth.userInfo
+      },
       actions: {
-        updateUserInfo
+        updateAuthUserInfo
       }
     },
     methods: {
@@ -279,7 +268,7 @@
           email: this.userInfo.email,
           avatar: this.userInfo.avatar
         }
-        this.updateUserInfo(formData.id, formData)
+        this.updateAuthUserInfo(formData.id, formData)
       },
       activEditTab () {
         this.activeIndex = 1

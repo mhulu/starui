@@ -34,7 +34,7 @@
       </div>
 </template>
 <script>
-    import { logout, getUserInfo } from '../../vuex/actions'
+    import { logout } from '../../vuex/actions'
     import Dropdown from '../Dropdown'
     import * as utils from '../../utils'
     export default {
@@ -45,16 +45,14 @@
       },
       vuex: {
         actions: {
-          logout, getUserInfo
+          logout
         }
       },
       methods: {
         goUserInfo (event) {
-          // 执行vuex的actions,更改全局的userInfo
-          this.getUserInfo()
           // 将本组件的显示信息更改
           this.userInfo = JSON.parse(window.localStorage.getItem('userInfo'))
-          // 取消动画css
+          // 取消动画cs
           utils.removeClass(event.currentTarget.childNodes[0], 'icon-flash')
         }
       },

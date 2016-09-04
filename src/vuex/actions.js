@@ -91,7 +91,7 @@ export const updateUserInfo = ({dispatch}, id, data) => {
       type: 'success',
       timer: 2000
     })
-    dispatch(types.UPDATE_USER_INFO, {userInfo: response.data})
+    getUserInfo({dispatch})
   }, response => {
     swal({
       title: '操作失败',

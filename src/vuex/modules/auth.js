@@ -3,7 +3,7 @@ import { getCookie } from '../../authService'
 
 const state = {
   token: getCookie('token') || null,
-  userInfo: null
+  userInfo: JSON.parse(window.localStorage.getItem('auth.userInfo')) || null
 }
 
 const mutations = {

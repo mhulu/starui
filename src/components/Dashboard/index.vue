@@ -32,10 +32,19 @@
   import chatbox from './Chatbox.vue'
   import Breadcrumb from './Breadcrumb.vue'
   import toaster from '../Toaster.vue'
+  import {getUserInfo} from '../../vuex/actions'
   export default {
     replace: false,
     components: {
       toaster, sidebar, topNavbar, chatbox, Breadcrumb
+    },
+    vuex: {
+      getters: {
+        userInfo: state => state.auth.userInfo
+      },
+      actions: {
+        getUserInfo
+      }
     }
   }
 </script>
